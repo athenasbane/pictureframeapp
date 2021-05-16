@@ -8,8 +8,8 @@ import { Landing } from './Pages/Landing/Landing';
 import { Config } from './Pages/Config/Config';
 import { Upload } from './Pages/Upload/Upload';
 
-const API_ENDPOINT = ''
-const URL = ''
+const API_ENDPOINT = process.env.API_ENDPOINT;
+const URL = process.env.URL;
 
 function App() {
   
