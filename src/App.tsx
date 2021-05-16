@@ -8,8 +8,8 @@ import { Landing } from './Pages/Landing/Landing';
 import { Config } from './Pages/Config/Config';
 import { Upload } from './Pages/Upload/Upload';
 
-const API_ENDPOINT = process.env.API_ENDPOINT as string;
-const URL = process.env.URL as string;
+const API_ENDPOINT = 'https://jjntp4c3r8.execute-api.eu-west-2.amazonaws.com/default/getPresignedUrl';
+const URL = 'https://c7mf1zuh86.execute-api.eu-west-2.amazonaws.com/develop/getObjectURLs';
 
 function App() {
   
