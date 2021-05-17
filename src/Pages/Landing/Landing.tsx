@@ -36,7 +36,7 @@ export const Landing: React.FC<LandingProps> = ({images, config}) => {
         }
     }, [currentImage, images, config])
 
-    const image = <img className={styles.root} src={Array.isArray(images) ? images[currentImage] : undefined} alt="dog images" />
+    const image = <img className={styles.image} src={Array.isArray(images) ? images[currentImage] : undefined} alt="dog images" />
     
     return (
         <div className={styles.root}>

@@ -1,4 +1,4 @@
-import React, { ReactEventHandler, useState } from 'react';
+import React from 'react';
 import styles from './Upload.module.scss';
 import { Button } from '../../Components/Atoms/Button/Button';
 import { useHistory } from 'react-router-dom';
