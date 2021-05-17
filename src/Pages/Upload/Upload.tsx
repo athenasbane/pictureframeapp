@@ -1,7 +1,8 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import styles from './Upload.module.scss';
 import { Button } from '../../Components/Atoms/Button/Button';
-import { useHistory } from 'react-router-dom';
+import { SubPageHeader } from '../../Components/Molicules/SubPageHeader/SubPageHeader';
 
 export type UploadProps = {
     changeHandler: (event: React.ChangeEvent<HTMLInputElement>) => void;
@@ -18,14 +19,18 @@ export const Upload: React.FC<UploadProps> = ({changeHandler, handleSubmission, 
 
     return (
         <div className={styles.root}>
-            <div className={styles.homeBtn}>
-                <Button onClick={() => history.push('/')}>Home</Button>
-            </div>
+            <SubPageHeader>
+                <div className={styles.homeBtn}>
+                    <Button onClick={() => history.push('/')}>Home</Button>
+                </div>
+                <h3 className={styles.title}>Upload</h3>
+            </SubPageHeader>
             <div className={styles.container}>
-                <h3 className={styles.label}>Upload</h3>
-            </div>
-            <div className={styles.container}>
-                <input type="file" onChange={(event) => changeHandler(event)} />
+                <div className={styles.uploadInput}>
+                    <input id="file" type="file" onChange={(event) => changeHandler(event)} />
+                    <label htmlFor="file">Select a Photo</label>
+                </div>
+                
                 <Button onClick={handleSubmission}>Upload</Button>
                 {uploadStatus !== 'none' ? status : null}
             </div>

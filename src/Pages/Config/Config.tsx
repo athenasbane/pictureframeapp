@@ -1,8 +1,10 @@
 import React from 'react';
-import { Slider } from '../../Components/Atoms/Slider/Slider';
+import { useHistory } from 'react-router-dom';
 import styles from './Config.module.scss';
 import { Button } from '../../Components/Atoms/Button/Button';
-import { useHistory } from 'react-router-dom';
+import { Slider } from '../../Components/Atoms/Slider/Slider';
+import { SubPageHeader } from '../../Components/Molicules/SubPageHeader/SubPageHeader';
+
 
 export type ConfigProps = {
     speed: number
@@ -18,13 +20,13 @@ export const Config: React.FC<ConfigProps> = ({ speed, configChangeHandler }) =>
     const history = useHistory();
     return (
         <div className={styles.root}>
-            <div className={styles.homeBtn}>
-                <Button onClick={() => history.push('/')}>Home</Button>
-            </div>
-            <div className={styles.container}>
-                
-                <h3 className={styles.label}>Configuration</h3>
-            </div>
+            <SubPageHeader>
+                <div className={styles.homeBtn}>
+                    <Button onClick={() => history.push('/')}>Home</Button>
+                </div>
+                <h3 className={styles.title}>Configuration</h3>
+            </SubPageHeader>
+            
             <div className={styles.container}>
                 <div className={styles.labelContainer}>
                    <p className={styles.label}>{configDefaults.min}</p>

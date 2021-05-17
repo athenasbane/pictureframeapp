@@ -4,7 +4,13 @@
   background-color: rgba(black, 0.6);
 }
 
+.title {
+  color: white;
+  text-align: center;
+}
+
 .container {
+  padding: 100px;
   margin: 0 auto;
   width: 50%;
   display: flex;
@@ -15,10 +21,8 @@
 }
 
 .homeBtn {
-  width: 100%;
-  position: absolute;
-  top: 5px;
-  left: 5px;
+  align-self: flex-start;
+  margin: 5px;
 }
 
 .labelContainer {
