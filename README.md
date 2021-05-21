@@ -27,35 +27,101 @@ This is for my Raspberry Pi screen it will show pictures of the dogs on the scre
 ## Todos
 
 - [ ] Build ~~Upload~~ Frontend
+  - [x] Change the logo and app title 
   - [x] Upload image from front end to S3?
   - [x] Use react or vanilla?
-  - [ ] Make mainpage 
+    - React
+  - [ ] ~~Breakpoints Layout~~ 
+  - [x] Make mainpage 
+  - [x] Make Color Variables
+  - [x] Add Loading Spinner
     - [x] Add overlay that moves to `/config` and `/upload`
       - [ ] Add icons to the buttons on overlay
+      - [ ] Make buttons larger for smaller screens 
       - [ ] Hookify the timeout function for future projects?
       - [ ] Add loading screen before images are loaded from backend
     - [x] Add image carosel 
   - [x] Make config page
-  - [ ] Make upload page
-  - [ ] Tests
-- [ ] Build Rest API
+    - [x] Home button makes it slightly bigger than view width that makes for an annoying "sliding" of the screen when using the slider. Maybe add a header container and add the title and button to there that is instead of position absolute. 
+  - [x] Make upload page
+    - [x] Sort out styling of this page. 
+  - [ ] Tests - Please please add some testing. 
+- [x] Build Rest API
   - [x] Look into this being all lambdas. 
   - [ ] Deal with truncation in the getObjectUrls
   - [x] convert keys to urls in the getObjectUrls
-  - [ ] Different image types for iPhone uploads etc.
+  - [x] Different image types for iPhone uploads etc.
 - [ ] ~~Electron App~~  [14/05/21 - 15:53]
   - [ ] ~~Learn Electron for Rasperian~~ [14/05/21 - 15:53]
-- [ ] Build Image renderer site
+- [x] Build Image renderer site
+- [x] UAT Test on PI
+- [ ] Tidy the code! It's hurting my eyes. 
 
 ## Issues
 
 - [x] issues with getObjectList lambda API returning a internal server error instead of correct array JSON.  
   - I didn't stringify the response!
-- [ ] CORS is open on APIs. 
-- [ ] images are not public by default making them blocked. 
-- [ ] Images not showing correctly on after upload without a refresh. 
+- [x] CORS is open on APIs. 
+- [ ] Code format is dirty 
+- [x] images are not public by default making them blocked. 
+- [x] Images not showing correctly on after upload without a refresh. 
+- [x] Env variables not working. 
+- [x] Lock down uploads to a JWT or someother way.
+  - [ ] currently CORS will look at further lock downs.  
+- [ ] Lock down image linking to the site if possible. 
+- [x] Images not keeping aspect ratio
+- [ ] All buttons too small for small touch screens.
+- [ ] Memory Leak from Async timer useEffect. 
+  - Call the cleanup before redirect?
+- [ ] No tests. 
+- [ ] No image/file validation
+- [x] Sass module error
 
 ## Log
+
+#### [21/05/21 - 08:55]
+
+Just had a blast of this this morning trying to tidy a load of bits up. I've added a loader spinner to the landing page if there are no images. I've also added some color constants in Sass. I think I need a border color variable but can do that later. I did some work on creating a grid system a few days ago that I forgot to log but I think I'm going to split that out into another project. I had an issue with Sass and react styles modules, turns out that node-Sass doesn't work with modules and variables so changed out for sass-loader and webpack seems happier.  
+
+I'm very conscious of the lack of testing on this project so need to spend a bit of time on that at some point. I also want to add some sort of Auth I may do some sort of Auth Bearer Lambda to stick with the serverless theme of the project. 
+
+#### [17/05/21 - 08:24]
+
+Just having a look at the code and I really want to make a set of layout components with breakpoints included. I've had a look at a couple of articles and think I have some ideas about how to do this myself. 
+
+I'm thinking of making them molicule components with a overarching breakpoint file:
+
+```tsx
+<Header breakpoints={breakpoints}>
+  <Navbar breakpoints={breakpoints}>
+  	
+  </Navbar>
+  
+</Header>
+
+
+<Section hiddenOn={breakpoints.mobile}>
+	// Atoms
+</Section
+```
+
+  
+
+#### [17/05/21 - 21:58] 
+
+A good 45 minute blast! Got a lot done from updating some of the Sass and the uploads page
+
+#### [17/05/21 - 21:18]
+
+Just going to do some pruning! Couple of small changes. 
+
+#### [17/05/21 - 08:21]
+
+I got it deployed last night. Looks like it's working there's a few issues from inital testing that I want to look at. Added to the Issues and todos.
+
+#### [16/05/21 - 21:08] 
+
+Calling it a weekend. Issues with env variables in Amplify. Will try again tomorrow. 
 
 #### [16/05/21 - 20:25]
 
@@ -89,7 +155,7 @@ Built something pretty cool. I was having issues with timer functions with react
 
 Here's the code: 
 
-```typescript
+```tsx
 const [ currentImage, setCurrentImage ] = useState(0);
     const timeoutRef = useRef<any>(null);
 
@@ -122,7 +188,7 @@ All that's left on the landing page is styling the buttons on the overlay when p
 
 I'm going to call it a day on the coding. Back tomorrow to box it all off. 
 
-#### [15/05/21 - 16:36]
+#### [15/05/21 - 17:36]
 
 Time to build the react app for the viewer and uploader. 
 

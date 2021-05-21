@@ -1,7 +1,9 @@
+@use '../../Constants/colors';
+
 .root {
   height: 100vh;
   width: 100vw;
-  background-color: rgba(black, 0.6);
+  background-color: rgba(colors.$base, 0.9);
 }
 
 .container {
@@ -16,7 +18,7 @@
 }
 
 .title {
-  color: white;
+  color: colors.$text;
   text-align: center;
 }
 
@@ -36,17 +38,17 @@
 
   + label {
     padding: 2px 5px;
-    border: 1px solid white;
-    color: white;
+    border: 1px solid colors.$text;
+    color: colors.$text;
   }
 
   &:focus + label,
   + label:hover {
-    border: 2px solid papayawhip;
+    border: 2px solid colors.$text;
   }
 
   &:focus + label {
-    border: 3px solid papayawhip;
+    border: 3px solid colors.$text;
   }
 }
 .homeBtn {
@@ -64,5 +66,5 @@
 }
 
 .label {
-  color: white;
+  color: colors.$text;
 }

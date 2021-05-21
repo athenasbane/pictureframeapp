@@ -3,10 +3,13 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
+  Redirect,
 } from 'react-router-dom';
 import { Landing } from './Pages/Landing/Landing';
 import { Config } from './Pages/Config/Config';
 import { Upload } from './Pages/Upload/Upload';
+import { Page404 } from './Pages/Page404/Page404';
+import { Loader } from './Components/Atoms/Loader/Loader';
 
 const API_ENDPOINT = 'https://jjntp4c3r8.execute-api.eu-west-2.amazonaws.com/develop/getPresignedUrl';
 const URL = 'https://c7mf1zuh86.execute-api.eu-west-2.amazonaws.com/develop/getObjectURLs';
@@ -103,9 +106,13 @@ function App() {
         <Route path="/upload">
           <Upload changeHandler={changeHandler} handleSubmission={handleSubmission} uploadStatus={uploadStatus}/>
         </Route>
-        <Route path="/">
-          <Landing config={config} images={images} />
+        <Route path="/404">
+          <Page404 />
         </Route>
+        <Route path="/">
+          {images ? <Landing config={config} images={images} /> : <Loader />}
+        </Route>
+        <Redirect to="/404" />
       </Switch>
     </Router>
   );
