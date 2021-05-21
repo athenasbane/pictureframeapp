@@ -27,7 +27,7 @@ export const Upload: React.FC<UploadProps> = ({changeHandler, handleSubmission, 
             </SubPageHeader>
             <div className={styles.container}>
                 <div className={styles.uploadInput}>
-                    <input id="file" type="file" onChange={(event) => changeHandler(event)} />
+                    <input accept="image/*" type="file" onChange={(event) => changeHandler(event)} />
                 </div>
                 
                 <Button onClick={handleSubmission}>Upload</Button>
