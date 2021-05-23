@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import styles from './Overlay.module.scss';
 import {Button} from '../../Atoms/Button/Button';
 import { useHistory } from 'react-router-dom';
@@ -25,7 +25,12 @@ export const Overlay = () => {
         }
     }
 
+    useEffect(() => {
+        return () => resetTimeout();
+    })
+
     const btnClickHandler = (location: string) => {
+        resetTimeout()
         history.push(location)
     }
     
