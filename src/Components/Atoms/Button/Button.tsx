@@ -13,7 +13,15 @@ export type ButtonProps = {
 
 const ButtonTypes = ['primary', 'secondary']
 
-export const Button: React.FC<ButtonProps> = ({children, onClick=() => {}, version = 'primary', type = 'button', size='medium', icon }) => {
+export const Button: React.FC<ButtonProps> = (
+        {
+            children, 
+            onClick=() => {}, 
+            version = 'primary', 
+            type = 'button', 
+            size='medium', 
+            icon 
+        }) => {
     const [ btnType, setBtnType ] = useState(version);
     useEffect(() => {
         if (version !== 'primary' && ButtonTypes.includes(version)) {
@@ -26,8 +34,23 @@ export const Button: React.FC<ButtonProps> = ({children, onClick=() => {}, versi
             `)
         }
     }, [version]);
+    const sizer: (size: string) => {width: string} = (size: string) => {
+        console.log(size)
+        const sizeObj: {[name: string]: {width: string, height: string}} = {
+            small: { width: '20%', height: '100%' }, 
+            medium: { width: '30%', height: '100%' },
+            large: {width: '50%', height: '100%' },
+        }
+        return sizeObj[size];
+    };
+
     return (
-        <button className={styles[btnType]} onClick={onClick} type={type} >
+        <button 
+            className={styles[btnType]} 
+            onClick={onClick} 
+            type={type} 
+            style={sizer(size)} 
+            >
             {children}
         </button>
     );

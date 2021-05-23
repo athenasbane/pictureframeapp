@@ -4,6 +4,7 @@ import styles from './Config.module.scss';
 import { Button } from '../../Components/Atoms/Button/Button';
 import { Slider } from '../../Components/Atoms/Slider/Slider';
 import { SubPageHeader } from '../../Components/Molicules/SubPageHeader/SubPageHeader';
+import useWindowSize from '../../customHooks/useWindowSize';
 
 
 export type ConfigProps = {
@@ -18,15 +19,19 @@ const configDefaults = {
 
 export const Config: React.FC<ConfigProps> = ({ speed, configChangeHandler }) => {
     const history = useHistory();
+    const { width } = useWindowSize();
     return (
         <div className={styles.root}>
             <SubPageHeader>
                 <div className={styles.homeBtn}>
-                    <Button onClick={() => history.push('/')}>Home</Button>
+                    <Button 
+                        size={ width && width < 800 ? 'large' : 'medium'}
+                        onClick={() => history.push('/')}>
+                            Home
+                    </Button>
                 </div>
                 <h3 className={styles.title}>Configuration</h3>
             </SubPageHeader>
-            
             <div className={styles.container}>
                 <div className={styles.labelContainer}>
                    <p className={styles.label}>{configDefaults.min}</p>
