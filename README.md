@@ -71,13 +71,25 @@ This is for my Raspberry Pi screen it will show pictures of the dogs on the scre
 - [ ] Lock down image linking to the site if possible. 
 - [x] Images not keeping aspect ratio
 - [ ] All buttons too small for small touch screens.
-- [ ] Memory Leak from Async timer useEffect. 
+- [x] Memory Leak from Async timer useEffect. 
   - Call the cleanup before redirect?
 - [ ] No tests. 
-- [ ] No image/file validation
+- [x] No image/file validation
 - [x] Sass module error
 
 ## Log
+
+#### [23/05/21 - 09:04]
+
+Changed the CSS on the landing page so it looks better on desktop. Looks loads better now. 
+
+#### [23/05/21 - 08:47]
+
+Added larger buttons for mobile. Not perfect but will do for now. 
+
+#### [23/05/21 - 07:33]
+
+Fixed the memory leak issue I didn't return a useEffect cleanup function on the landing page. That's fixed now. I also was having trouble with the input file on Iphone not being clickable. I added a z-index of 100 to it as a bit of a hailmary and it worked. Still not sure why but hey it works. 
 
 #### [21/05/21 - 08:55]
 
